@@ -1,0 +1,226 @@
+import React, { useState, useEffect } from 'react';
+
+// Website: Materi Model Atom
+// Single-file React component (TailwindCSS classes used)
+// Default export a React component
+
+export default function AtomModelPage() {
+  const [dark, setDark] = useState(false);
+
+  return (
+    <div className={"min-h-screen p-6 " + (dark ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900')}>
+      <div className="max-w-5xl mx-auto">
+        <header className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-extrabold">Model Atom</h1>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setDark(!dark)}
+              className="px-3 py-1 rounded-lg border hover:opacity-90"
+            >
+              {dark ? 'Mode Terang' : 'Mode Gelap'}
+            </button>
+          </div>
+        </header>
+
+        <main className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <section className="md:col-span-2 space-y-6">
+            {/* Pengantar / Apersepsi */}
+            <article className="p-6 rounded-2xl shadow-sm border">
+              <h2 className="text-2xl font-semibold mb-2">Pengantar / Apersepsi</h2>
+              <p className="leading-7">Selamat datang pada materi <strong>Model Atom</strong>. Di halaman ini kamu akan mempelajari sejarah singkat model atom, pengertian berbagai model atom (Thomson, Rutherford, Bohr), rumus penting yang sering dipakai pada mekanika atom sederhana, contoh soal, dan animasi interaktif sederhana yang menggambarkan konsep kulit elektron pada model Bohr. Sebelum masuk materi, pikirkan: bagaimana para ilmuwan mengetahui struktur atom padahal terlalu kecil untuk dilihat langsung?</p>
+            </article>
+
+            {/* Pengertian */}
+            <article className="p-6 rounded-2xl shadow-sm border">
+              <h2 className="text-2xl font-semibold mb-2">Pengertian</h2>
+              <div className="space-y-3">
+                <p><strong>Atom</strong> adalah partikel kecil yang merupakan penyusun dasar materi. Model atom adalah representasi konseptual tentang struktur atom dan perilaku elektronnya. Ada beberapa model penting:</p>
+                <ul className="list-disc ml-6">
+                  <li><strong>Model Thomson (plum-pudding)</strong>: atom bermuatan positif dengan elektron tersebar seperti kismis dalam puding.</li>
+                  <li><strong>Model Rutherford</strong>: atom memiliki inti kecil bermuatan positif (proton) dan elektron mengelilingi inti; ditemukannya inti melalui eksperimen hamburan partikel alpha.</li>
+                  <li><strong>Model Bohr</strong>: elektron mengorbit inti pada lintasan diskret (kulit) dengan energi tertentu — cocok untuk menjelaskan spektrum hidrogen.</li>
+                </ul>
+              </div>
+            </article>
+
+            {/* Rumus */}
+            <article className="p-6 rounded-2xl shadow-sm border">
+              <h2 className="text-2xl font-semibold mb-2">Rumus Penting (Model Bohr & Spektrum)</h2>
+              <div className="space-y-3">
+                <p>Beberapa rumus yang sering muncul:</p>
+                <ol className="list-decimal ml-6">
+                  <li>
+                    <strong>Energi pada tingkat n (untuk atom hydrogen-like)</strong>:
+                    <div className="mt-2 p-3 rounded bg-opacity-10 border">
+                      <code className="block">E_n = - (m e^4) / (8 ε₀^2 h^2) · (Z^2 / n^2) = -13,6 eV · (Z^2 / n^2)</code>
+                      <p className="text-sm mt-2">(untuk atom hidrogen Z=1 → E_n = -13,6 eV / n^2)</p>
+                    </div>
+                  </li>
+                  <li>
+                    <strong>Perubahan energi saat transisi (emis/absorpsi foton)</strong>:
+                    <div className="mt-2 p-3 rounded bg-opacity-10 border">
+                      <code className="block">ΔE = E_f - E_i = h ν = h c / λ</code>
+                      <p className="text-sm mt-2">Gunakan tanda negatif/positif sesuai energi awal dan akhir.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <strong>Rumus Rydberg (untuk panjang gelombang spektrum hidrogen)</strong>:
+                    <div className="mt-2 p-3 rounded bg-opacity-10 border">
+                      <code className="block">1/λ = R (1/n_f^2 - 1/n_i^2),  R ≈ 1,097×10^7 m⁻¹</code>
+                    </div>
+                  </li>
+                </ol>
+                <p className="text-sm text-muted">Catatan: rumus di atas berlaku tepat untuk atom hidrogen. Untuk atom lain digunakan Z (nomor atom) pada formula energi Bohr (hanya berlaku untuk sistem hydrogen-like).</p>
+              </div>
+            </article>
+
+            {/* Contoh soal */}
+            <article className="p-6 rounded-2xl shadow-sm border">
+              <h2 className="text-2xl font-semibold mb-2">Contoh Soal dan Pembahasan</h2>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold">Soal 1</h3>
+                  <p>Elektron pada atom hidrogen berada pada tingkat energi n = 3 lalu turun ke n = 2. Hitung panjang gelombang foton yang dipancarkan. (Gunakan R = 1,097×10<sup>7</sup> m<sup>-1</sup>.)</p>
+                  <details className="mt-2 p-4 rounded border bg-opacity-5">
+                    <summary className="cursor-pointer font-medium">Pembahasan</summary>
+                    <div className="mt-2">
+                      <p>Gunakan rumus Rydberg:</p>
+                      <p className="italic">1/λ = R(1/n_f^2 - 1/n_i^2) = R(1/2^2 - 1/3^2) = R(1/4 - 1/9) = R(5/36).</p>
+                      <p>Jadi 1/λ = 1,097×10<sup>7</sup> × 5/36 = 1,5236×10<sup>6</sup> m<sup>-1</sup> → λ ≈ 6,56×10<sup>-7</sup> m = 656 nm.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">Soal 2</h3>
+                  <p>Energi relatif tingkat n = 1 dan n = 2 pada atom hidrogen. Berapa energi masing-masing tingkat (dalam eV)?</p>
+                  <details className="mt-2 p-4 rounded border bg-opacity-5">
+                    <summary className="cursor-pointer font-medium">Pembahasan</summary>
+                    <div className="mt-2">
+                      <p>E_n = -13,6 eV / n^2 → E_1 = -13,6 eV, E_2 = -13,6 / 4 = -3,4 eV.</p>
+                    </div>
+                  </details>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold">Soal 3 (Aplikasi Z)</h3>
+                  <p>Hitung energi dasar (n=1) pada ion He<sup>+</sup> (Z = 2).</p>
+                  <details className="mt-2 p-4 rounded border bg-opacity-5">
+                    <summary className="cursor-pointer font-medium">Pembahasan</summary>
+                    <div className="mt-2">
+                      <p>E_1 = -13,6 eV × Z^2 = -13,6 × 4 = -54,4 eV.</p>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </article>
+
+            {/* Footer note */}
+            <article className="p-4 text-sm text-center text-gray-500 rounded">
+              <p>Materi disusun singkat — gunakan sebagai bahan ajar atau bahan belajar. Untuk perhitungan lebih akurat gunakan konstanta fisika lengkap (h, e, ε₀) dan satuan SI.</p>
+            </article>
+          </section>
+
+          {/* Sidebar: Animasi dan ringkasan */}
+          <aside className="space-y-6">
+            <div className="p-6 rounded-2xl shadow-sm border flex flex-col items-center gap-4">
+              <h3 className="text-xl font-semibold">Animasi: Model Bohr (Interaktif)</h3>
+              <p className="text-sm text-center">Klik tombol untuk mengubah tingkat energi (n) dan lihat perubahan orbit.</p>
+
+              <AtomAnimation />
+
+              <div className="w-full flex gap-2 mt-3">
+                <button onClick={() => window.dispatchEvent(new CustomEvent('set-n', { detail: { n: 1 } }))} className="flex-1 py-2 rounded border">n=1</button>
+                <button onClick={() => window.dispatchEvent(new CustomEvent('set-n', { detail: { n: 2 } }))} className="flex-1 py-2 rounded border">n=2</button>
+                <button onClick={() => window.dispatchEvent(new CustomEvent('set-n', { detail: { n: 3 } }))} className="flex-1 py-2 rounded border">n=3</button>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl shadow-sm border">
+              <h4 className="font-semibold">Ringkasan Singkat</h4>
+              <ul className="list-disc ml-5 mt-2">
+                <li>Atom memiliki inti kecil dan elektron di sekitarnya.</li>
+                <li>Model Bohr memperkenalkan tingkat energi diskret (n).</li>
+                <li>Perpindahan elektron menyebabkan emisi/absorpsi foton dengan energi ΔE = hν.</li>
+              </ul>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+
+// ---------- Komponen Animasi Atom (SVG + CSS animation) ----------
+function AtomAnimation() {
+  // default n
+  const [n, setN] = useState(2);
+
+  useEffect(() => {
+    function handler(e) {
+      const newN = (e && e.detail && typeof e.detail.n === 'number') ? e.detail.n : 2;
+      setN(newN);
+    }
+    window.addEventListener('set-n', handler);
+    return () => window.removeEventListener('set-n', handler);
+  }, []);
+
+  // Radius skala sederhana (bukan skala nyata)
+  const base = 36; // px
+  const radius = base * Math.max(1, n); // orbit radius, ensure n>=1
+  const duration = Math.max(3, 1.2 * Math.max(1, n)); // durasi putaran
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <svg width={radius * 2 + 40} height={radius * 2 + 40} viewBox={`0 0 ${radius * 2 + 40} ${radius * 2 + 40}`}>
+        <defs>
+          <radialGradient id="coreGrad" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="#FFD166" />
+            <stop offset="100%" stopColor="#F07A5F" />
+          </radialGradient>
+        </defs>
+
+        <g transform={`translate(${radius + 20}, ${radius + 20})`}>
+          {/* Orbit */}
+          <circle cx={0} cy={0} r={radius} fill="none" strokeOpacity={0.25} strokeWidth={1.5} stroke="#94A3B8" />
+
+          {/* Nucleus */}
+          <circle cx={0} cy={0} r={12} fill="url(#coreGrad)" />
+
+          {/* Electron (animated) */}
+          <g>
+            <circle
+              className="electron"
+              cx={radius}
+              cy={0}
+              r={6}
+              fill="#60A5FA"
+              style={{ transformOrigin: `${-radius}px 0px` }}
+            />
+          </g>
+
+          {/* label n */}
+          <text x={-10} y={-radius - 12} fontSize={12}>Kulit n = {n}</text>
+        </g>
+
+        <style>{`
+          /* Animasi rotasi electron */
+          .electron {
+            transform-box: fill-box;
+            animation: orbit ${duration}s linear infinite;
+          }
+          @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+          }
+        `}</style>
+      </svg>
+
+      <div className="text-sm text-center">
+        <p>Orbit radius (skala visual): <strong>{radius}px</strong> — durasi putaran: <strong>{duration.toFixed(1)} s</strong></p>
+      </div>
+    </div>
+  );
+}
